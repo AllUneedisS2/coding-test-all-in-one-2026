@@ -1,4 +1,4 @@
-package FreeSale;
+package 무료행사;
 import java.util.*;
 
 public class Hashmap {
