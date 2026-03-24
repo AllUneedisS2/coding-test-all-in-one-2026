@@ -1,4 +1,5 @@
 package 잠겨버린사물함;
+import java.util.*;
 
 public class BFS {
 
@@ -15,7 +16,7 @@ public class BFS {
         // 2
         int[][] lockers3 = new int[][]{{0,1},{0,1},{2,3},{2,3}};
 
-        solution(lockers1);
+        solution(lockers3);
 
         System.out.println(result);
 
@@ -25,17 +26,30 @@ public class BFS {
 
         int n = lockers.length;
         boolean[] visited = new boolean[n];
-        bfs(n, lockers, visited);
+        bfs(n, lockers, 0, visited);
+
     }
 
-    private static void bfs(int n, int[][] lockers, boolean[] visited) {
+    private static void bfs(int n, int[][] lockers, int start, boolean[] visited) {
 
-        for (int i = 0 ; i < n ; i++) {
+        Deque<Integer> q = new ArrayDeque<>();
 
-            if (!visited[i] && )
+        visited[start] = true;
+        q.add(start);
 
+        while (!q.isEmpty()){
+            int cur = q.removeFirst();
+            for (int nxt : lockers[cur]) {
+                if (!visited[nxt]) {
+                    visited[nxt] = true;
+                    q.add(nxt);
+                }
+            }
         }
 
+        for (boolean chk : visited) {
+            if (!chk) result++;
+        }
 
     }
 
