@@ -1,7 +1,7 @@
 package 잠겨버린사물함;
 import java.util.*;
 
-public class BFS {
+public class DFS {
 
     static int result = 0;
 
@@ -18,38 +18,23 @@ public class BFS {
 
         solution(lockers3);
 
-        System.out.println(result);
-
     }
 
     private static void solution(int[][] lockers) {
         int n = lockers.length;
         boolean[] visited = new boolean[n];
-        bfs(lockers, 0, visited);
-
+        dfs(lockers, 0, visited);
+        System.out.println(n - result);
     }
 
-    private static void bfs(int[][] lockers, int start, boolean[] visited) {
-
-        Deque<Integer> q = new ArrayDeque<>();
-
+    private static void dfs(int[][] lockers, int start, boolean[] visited) {
+        result++;
         visited[start] = true;
-        q.add(start);
-
-        while (!q.isEmpty()){
-            int cur = q.removeFirst();
-            for (int nxt : lockers[cur]) {
-                if (!visited[nxt]) {
-                    visited[nxt] = true;
-                    q.add(nxt);
-                }
+        for (int node : lockers[start]) {
+            if (!visited[node]) {
+                dfs(lockers, node, visited);
             }
         }
-
-        for (boolean chk : visited) {
-            if (!chk) result++;
-        }
-
     }
 
 }
