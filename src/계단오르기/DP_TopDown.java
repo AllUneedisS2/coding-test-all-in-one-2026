@@ -1,6 +1,9 @@
 package 계단오르기;
 import java.util.*;
 
+// TopDown도 결국에는 계산을 아래서부터 완료돼야 하는건데..
+// 왜 TopDown이라고 하는거지... 잘 이해는 안되지만...
+// 어쨌든 위에서 부터 계산 요청이 내려가니까... 뭐...ㅎㅎ...
 class DP_TopDown {
     public static void main(String[] args) {
         // f(n) = f(n-2) + f(n-1)
